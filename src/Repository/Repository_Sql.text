@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
+using Dapper;
+using OnlineStore.Data;
+using OnlineStore.IRepository;
+
+namespace OnlineStore.Repository
+{
+    public class Repository_Sql<T> : IRepository<T> where T : class
+    {
+        public async Task<bool> AddAsync(T entity)
+        {
+            using (IDbConnection conn = DbConfig.GetSqlConnection())
+            {
+                string sql = @"insert into product(name,quantity,price,categoryid) values(@name,@quantity,@price,@categoryid)";
+                return await conn.ExecuteAsync(sql, entity) > 0;
+            }
+        }
+
+        public async Task<bool> DeleteById(int id)
+        {
+            using (IDbConnection conn = DbConfig.GetSqlConnection())
+            {
+                string sql = @"delete from product where id=@id";
+                return await conn.ExecuteAsync(sql, new { id }) > 0;
+            }
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            using (IDbConnection conn = DbConfig.GetSqlConnection())
+            {
+                return await conn.QueryAsync<T>(@"select Id,Name,Quantity,Price,CategoryId From Product");
+            }
+        }
+
+        public async Task<T> GetByIdAsync(int id)
+        {
+            using (IDbConnection conn = DbConfig.GetSqlConnection())
+            {
+                string sql = @"select id,name,quantity,price,categoryid from product where id=@id";
+                return await conn.QueryFirstOrDefaultAsync<T>(sql, new { id });
+            }
+
+        }
+
+        public async Task<bool> UpdateAsync(T entity)
+        {
+            using (IDbConnection conn = DbConfig.GetSqlConnection())
+            {
+                string sql = @"update product set name=@name,quantity=@quantity,price=@price,categoryid=@categoryid where id=@id";
+                return await conn.ExecuteAsync(sql, entity) > 0;
+            }
+        }
+    }
+}
