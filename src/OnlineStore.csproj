@@ -15,10 +15,10 @@
     <Folder Include="ViewModels\" />
     <Folder Include="IRepository\" />
     <Folder Include="Repository\" />
-    <Folder Include="Models\Pages\" />
     <Folder Include="Data\" />
     <Folder Include="Views\UserInfo\" />
     <Folder Include="wwwroot\lib\jquery-easyui\" />
+    <Folder Include="Models\Pagination\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Repository\Repository_Sql.text" />

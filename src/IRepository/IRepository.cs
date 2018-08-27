@@ -13,8 +13,5 @@ namespace OnlineStore.IRepository
         Task<bool> DeleteByIdAsync(int id);
         Task<bool> UpdateAsync(T entity);
 
-        //分页
-        PageDataView<T> GetPageListForSql(PageCriteria pageCriteria);
-
     }
 }
