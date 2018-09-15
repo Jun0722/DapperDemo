@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
 using Dapper.Contrib.Extensions;
-using OnlineStore.Data;
-using OnlineStore.IRepository;
-using OnlineStore.Models;
-using OnlineStore.Models.Pagination;
+using OnlineStore.Data.IRepository;
 
-namespace OnlineStore.Repository
+namespace OnlineStore.Data.Repository
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public class BaseRepository_Contrib<T>:IBaseRepository<T> where T:class
     {
         public async Task<bool> AddAsync(T entity)
         {
@@ -54,12 +49,5 @@ namespace OnlineStore.Repository
                 return await conn.UpdateAsync(entity);
             }
         }
-        //分页
-
-        public virtual List<T> GetPageList(UrlQuery urlQuery)
-        {
-            return null;
-        }
-      
     }
 }

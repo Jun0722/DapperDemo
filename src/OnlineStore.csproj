@@ -13,18 +13,18 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
-    <Folder Include="IRepository\" />
-    <Folder Include="Repository\" />
     <Folder Include="Data\" />
     <Folder Include="Views\UserInfo\" />
     <Folder Include="wwwroot\lib\jquery-easyui\" />
-    <Folder Include="Models\Pagination\" />
+    <Folder Include="Data\IRepository\" />
+    <Folder Include="Data\Repository\" />
+    <Folder Include="Data\IUnitOfWork\" />
+    <Folder Include="Data\UnitOfWork\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Repository\Repository_Sql.text" />
+    <None Remove="Repository\Repository_Sql.text" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Repository\Repository_Sql.text" />
     <None Include="wwwroot\lib\jquery-easyui\jquery.min.js" />
     <None Include="wwwroot\lib\jquery-easyui\jquery.easyui.mobile.js" />
     <None Include="wwwroot\lib\jquery-easyui\jquery.easyui.min.js" />
@@ -1075,5 +1075,13 @@
     <Content Remove="wwwroot\lib\jquery-easyui\locale\easyui-lang-ua.js" />
     <Content Remove="wwwroot\lib\jquery-easyui\locale\easyui-lang-zh_CN.js" />
     <Content Remove="wwwroot\lib\jquery-easyui\locale\easyui-lang-zh_TW.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\Pagination\Pagination.cs" />
+    <Compile Remove="Models\Pagination\UrlQuery.cs" />
+    <Compile Remove="IRepository\IRepository.cs" />
+    <Compile Remove="IRepository\IUserInfoRepository.cs" />
+    <Compile Remove="Repository\Repository.cs" />
+    <Compile Remove="Repository\UserInfoRepository.cs" />
   </ItemGroup>
 </Project>
